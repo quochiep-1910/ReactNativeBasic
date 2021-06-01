@@ -8,18 +8,30 @@ const DetailScreen = (props) => {
 
   const availableProducts = useSelector((state) => state.filterProducts);
   const product = availableProducts.find((item) => item.id === productId);
+
+
   console.log(product);
   const dispatch = useDispatch();
   const addToFav = () => {
     dispatch({ type: "THEM_VAO_YEU_THICH", productId: productId });
   };
-
+  // const checkToFav = () => {
+  //   dispatch({ type: "Check", productId: productId });
+  // };
   useEffect(
     () =>
       props.navigation.setOptions({
         headerRight: () => (
           <TouchableOpacity onPress={() => addToFav()}>
-            <Ionicons name="ios-star" size={24} color="black" />
+
+            if ( === true) {
+               <Ionicons name="ios-star" size={24} color="black" />
+            }
+           else
+           {
+              <Ionicons name="ios-star-outline" size={24} color="black" />
+           }
+           
           </TouchableOpacity>
         ),
       }),

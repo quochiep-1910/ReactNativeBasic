@@ -1,11 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { useDispatch } from "react-redux";
+
 
 const FilterScreen = (props) => {
+  
+
   const [isBrandNew, setIsBrandNew] = useState(false);
   const [isSale, setIsSale] = useState(false);
+
+  const dispatch = useDispatch();
+  const setFilter = useCallback(()=>{
+    const Filters= {
+      isBrandNew: isBrandNew,
+      isSale:isSale,
+    }
+    dispatch({type:'SET_FILTER',Filters:Filters})
+  })
+
   useEffect(
     () =>
       props.navigation.setOptions({
@@ -15,12 +29,14 @@ const FilterScreen = (props) => {
           </TouchableOpacity>
         ),
         headerRight: () => (
-          <TouchableOpacity>
+          <TouchableOpacity
+          
+          onPress={() =>setFilter() }>
             <Ionicons name="ios-save-outline" size={40} />
           </TouchableOpacity>
         ),
       }),
-    [props.navigation]
+    [props.navigation,isBrandNew,isSale]
   );
   return (
     <View>

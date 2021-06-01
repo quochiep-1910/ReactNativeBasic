@@ -18,8 +18,8 @@ const products = [
       "https://cdn.tgdd.vn/Products/Images/44/235405/acer-aspire-7-a715-42g-r4st-r5-nhqaysv004-16-600x600.jpg",
     categoryId: '4', description:'Latop xịn',
     isFav:true,
-    isBrand:true,
-    isSale:false,
+    isBrand:false,
+    isSale:true,
   },
   {
     id: "3",
@@ -39,7 +39,7 @@ const products = [
     categoryId: '3',
     isFav:true,
     isBrand:true,
-    isSale:false,isCart:true,
+    isSale:true,isCart:true,
   },
 ];
 
